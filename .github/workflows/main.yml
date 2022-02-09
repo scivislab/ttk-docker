@@ -35,6 +35,6 @@ jobs:
           platforms: linux/amd64
           target: ttk
           push: true
-          tags: |
-            chgarth/ttk:latest
-            ghcr.io/scivislab/ttk:latest
+          tags: ghcr.io/scivislab/ttk:latest
+          cache-from: type=registry,ref=ghcr.io/scivislab/ttk:buildcache
+          cache-to:   type=registry,ref=ghcr.io/scivislab/ttk:buildcache,mode=max
