@@ -13,6 +13,7 @@ jobs:
         ttk-version:
           - "dev"
           - "1.0.0"
+      max-parallel: 1
     steps:
       -
         name: Set up QEMU
@@ -43,7 +44,6 @@ jobs:
           target: ttk
           push: true
           tags: |
-            topologytoolkit/ttk:latest
-            ghcr.io/scivislab/ttk:latest
+            ghcr.io/scivislab/ttk:${{ matrix.ttk-version }}
           cache-from: type=registry,ref=ghcr.io/scivislab/ttk:buildcache
           cache-to:   type=registry,ref=ghcr.io/scivislab/ttk:buildcache,mode=max
