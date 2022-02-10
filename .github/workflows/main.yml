@@ -8,6 +8,11 @@ on:
 jobs:
   docker:
     runs-on: self-hosted
+    strategy:
+      matrix:
+        ttk-version:
+          - "dev"
+          - "1.0.0"
     steps:
       -
         name: Set up QEMU
@@ -33,6 +38,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           platforms: linux/amd64,linux/arm64
+          build-args: |
+            ttk=${{ ttk-version }}
           target: ttk
           push: true
           tags: |
