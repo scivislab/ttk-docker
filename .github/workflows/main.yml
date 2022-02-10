@@ -39,7 +39,7 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           build-args: |
-            ttk=${{ ttk-version }}
+            ttk=${{ matrix.ttk-version }}
           target: ttk
           push: true
           tags: |
