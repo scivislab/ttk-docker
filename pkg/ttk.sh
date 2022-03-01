@@ -31,6 +31,11 @@ require-pkgs \
     python3-dev             \
     python3-numpy-dev       \
     zlib1g-dev
+    
+if [ -n "${DEV}" ]; then
+        #echo "DEVELOPER MODE"
+        exit
+fi
 
 # get source code
 (curl -kL "https://github.com/topology-tool-kit/ttk/archive/${TTK_VERSION}.tar.gz" | tar zx --strip-components 1) ||

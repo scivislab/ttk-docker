@@ -80,6 +80,25 @@ FROM builder as builder-ttk
 ARG ttk=dev
 ENV TTK_VERSION=${ttk}
 
+ENV DEV=""
+
+COPY pkg/ttk.sh /tmp
+RUN  install-helper /tmp/ttk.sh
+
+# --------------------------------------------------------------------------
+
+#FROM builder-ttk as ttk-dev
+FROM builder as ttk-dev
+
+COPY --from=builder-ttk /usr/local /usr/local
+
+RUN apt-get update \
+ && apt-get -yqq --no-install-recommends install $(cat /usr/local/.pkgs) gdb \
+ && apt-get clean \
+ && rm -rf /var/cache/apt/lists
+
+ENV DEV="True"
+
 COPY pkg/ttk.sh /tmp
 RUN  install-helper /tmp/ttk.sh
   
@@ -88,21 +107,6 @@ RUN  install-helper /tmp/ttk.sh
 FROM base as ttk
 
 COPY --from=builder-ttk /usr/local /usr/local
-
-RUN apt-get update \
- && apt-get -yqq --no-install-recommends install $(cat /usr/local/.pkgs) \
- && apt-get clean \
- && rm -rf /var/cache/apt/lists
-
-# run pvserver by default
-CMD /usr/local/bin/pvserver
-EXPOSE 11111
-
-# --------------------------------------------------------------------------
-
-FROM build-base as ttk-dev
-
-COPY --from=builder /usr/local /usr/local
 
 RUN apt-get update \
  && apt-get -yqq --no-install-recommends install $(cat /usr/local/.pkgs) \
