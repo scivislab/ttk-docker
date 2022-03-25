@@ -7,7 +7,7 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       -
         name: Set up QEMU
@@ -20,10 +20,32 @@ jobs:
         uses: docker/login-action@v1 
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}        
       -
-        name: Build and push
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v1 
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
+        name: Build and push ttk
         uses: docker/build-push-action@v2
         with:
+          platforms: linux/amd64,linux/arm64
+          target: ttk
           push: true
-          tags: user/app:latest
+          tags: |
+            ghcr.io/scivislab/ttk:latest
+          cache-from: type=registry,ref=ghcr.io/scivislab/ttk:buildcache
+          cache-to:   type=registry,ref=ghcr.io/scivislab/ttk:buildcache,mode=max
+      -
+        name: Build and push ttk-dev
+        uses: docker/build-push-action@v2
+        with:
+          platforms: linux/amd64,linux/arm64
+          target: ttk-dev
+          push: true
+          tags: |
+            ghcr.io/scivislab/ttk-dev:latest
+          cache-from: type=registry,ref=ghcr.io/scivislab/ttk:buildcache
