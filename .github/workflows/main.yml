@@ -35,10 +35,10 @@ jobs:
           platforms: linux/amd64
           target: ttk
           push: true
-          cache-from: type=registry,ref=ghcr.io/scivislab/ttk:buildcache
-          cache-to:   type=registry,ref=ghcr.io/scivislab/ttk:buildcache,mode=max
           tags: |
             ghcr.io/scivislab/ttk:latest
+          cache-from: type=registry,ref=ghcr.io/scivislab/ttk:zbuildcache
+          cache-to:   type=registry,ref=ghcr.io/scivislab/ttk:zbuildcache,mode=max
       -
         name: Build and push ttk-dev
         uses: docker/build-push-action@v2
@@ -48,4 +48,4 @@ jobs:
           push: true
           tags: |
             ghcr.io/scivislab/ttk-dev:latest
-          cache-from: type=registry,ref=ghcr.io/scivislab/ttk:buildcache
+          cache-from: type=registry,ref=ghcr.io/scivislab/ttk:zbuildcache
