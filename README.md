@@ -9,22 +9,6 @@ The full docker image specifically contains:
 
 It is supposed to be used in conjunction with a local ParaView GUI.
 
-<!---
-## Simple usage
-
-To run Kitware's binary distribution of ParaView with TTK's docker, simply run:
-
-```
-./runParaViewTTKDocker.sh <Path to ParaView binary (version 5.6.1)> [<Standard ParaView arguments (state files, data, etc.)>]
-```
-
-To run a python script which uses TTK, simply run:
-
-```
-./runTTKPythonDocker.sh [<Standard pvpython arguments: Python script, data, etc. ABSOLUTE PATHS ONLY)>]
-```
---->
-
 ## Custom Images
 
 To re-build the image, simply clone this repository and run `docker build .`. (This will build a docker image with current versions of ParaView and TTK.)
