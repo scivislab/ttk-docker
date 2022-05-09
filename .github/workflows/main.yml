@@ -32,7 +32,7 @@ jobs:
         name: Build and push ttk
         uses: docker/build-push-action@v2
         with:
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           target: ttk
           push: true
           tags: |
@@ -43,9 +43,9 @@ jobs:
         name: Build and push ttk-dev
         uses: docker/build-push-action@v2
         with:
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           target: ttk-dev
           push: true
           tags: |
             ghcr.io/scivislab/ttk-dev:latest
-          cache-from: type=gha,ref=ghcr.io/scivislab/ttk:zbuildcache
+          cache-from: type=gha,ref=ghcr.io/scivislab/ttk:buildcache
