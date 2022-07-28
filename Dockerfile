@@ -101,6 +101,13 @@ ENV DEV="True"
 
 COPY pkg/ttk.sh /tmp
 RUN  install-helper /tmp/ttk.sh
+
+# install python packages needed for ttk
+RUN apt-get install --no-install-recommends -yqq \
+    python3-dev \
+    python3-numpy-dev \
+    python3-sklearn
+
   
 # --------------------------------------------------------------------------
 
@@ -112,6 +119,12 @@ RUN apt-get update \
  && apt-get -yqq --no-install-recommends install $(cat /usr/local/.pkgs) \
  && apt-get clean \
  && rm -rf /var/cache/apt/lists
+
+# install python packages needed for ttk
+RUN apt-get install --no-install-recommends -yqq \
+    python3-dev \
+    python3-numpy-dev \
+    python3-sklearn
 
 # run pvserver by default
 CMD /usr/local/bin/pvserver
