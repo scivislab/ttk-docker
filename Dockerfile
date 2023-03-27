@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 FROM base as build-base
 
-ENV CMAKE_BUILD_TYPE=MinSizeRel \
+ENV CMAKE_BUILD_TYPE=Release \
     CMAKE_GENERATOR=Ninja
 
 # bring in additional apt sources
@@ -35,9 +35,6 @@ COPY install-helper /usr/bin
 # install OSPRay + dependencies
 COPY pkg/ispc.sh /tmp
 RUN  install-helper /tmp/ispc.sh
-
-# COPY pkg/tbb.sh /tmp
-# RUN  install-helper /tmp/tbb.sh
 
 COPY pkg/embree.sh /tmp
 RUN  install-helper /tmp/embree.sh
