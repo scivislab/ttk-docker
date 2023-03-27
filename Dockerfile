@@ -67,7 +67,7 @@ COPY pkg/spectra.sh /tmp
 RUN  install-helper /tmp/spectra.sh
 
 # install ParaView
-ARG paraview=5.10.1
+ARG paraview=5.11.0
 ENV PARAVIEW_VERSION=${paraview}
 
 COPY pkg/paraview.sh /tmp
