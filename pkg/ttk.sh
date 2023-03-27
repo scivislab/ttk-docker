@@ -1,6 +1,3 @@
-#! /bin/bash
-set -e
-
 require-pkgs \
     libboost-system-dev
     
@@ -14,7 +11,6 @@ fi
 (curl -kL "https://github.com/topology-tool-kit/ttk/archive/${TTK_VERSION}.tar.gz" | tar zx --strip-components 1) ||
 (curl -kL "https://github.com/topology-tool-kit/ttk/archive/v${TTK_VERSION}.tar.gz" | tar zx --strip-components 1)
 
-# actually compile
 cmake-default \
     -DTTK_BUILD_DOCUMENTATION=OFF \
     -DTTK_BUILD_PARAVIEW_PLUGINS=ON \
@@ -28,11 +24,3 @@ cmake-default \
     -DTTK_ENABLE_64BIT_IDS=ON \
     -DTTK_ENABLE_EMBREE=ON \
     ..
-
-# call Ninja manually to ignore duplicate targets
-# cmake --build .
-
-# ninja -w dupbuild=warn install 
-# cmake --install .
-
-# popd
