@@ -16,7 +16,9 @@ RUN apt-get update \
  && apt-get update
 
 # install base development env
-RUN apt-get install --no-install-recommends -yqq \
+RUN apt-get update \
+ && apt-get install --no-install-recommends -yqq \
+    ca-certificates \
     build-essential \
     ninja-build \
     cmake \
