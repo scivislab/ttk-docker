@@ -34,8 +34,8 @@ COPY install-helper /usr/bin
 COPY pkg/ispc.sh /tmp
 RUN  install-helper /tmp/ispc.sh
 
-COPY pkg/tbb.sh /tmp
-RUN  install-helper /tmp/tbb.sh
+# COPY pkg/tbb.sh /tmp
+# RUN  install-helper /tmp/tbb.sh
 
 COPY pkg/embree.sh /tmp
 RUN  install-helper /tmp/embree.sh
