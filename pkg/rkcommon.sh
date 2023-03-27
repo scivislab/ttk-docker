@@ -1,4 +1,4 @@
-RKCOMMON_VERSION=1.8.0
+RKCOMMON_VERSION=1.11.0
 
 require-pkgs \
     libtbb-dev

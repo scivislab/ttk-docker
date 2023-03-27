@@ -1,11 +1,6 @@
-#! /bin/bash
+fetch-src https://github.com/ospray/ospray/archive/v2.11.0.tar.gz
 
-curl -L https://github.com/ospray/ospray/archive/v2.8.0.tar.gz | tar xz --strip-components 1
-
-cmake -S . -B build \
+cmake-default \
+    -DCMAKE_BUILD_TYPE=Release \
     -DOSPRAY_ENABLE_APPS=OFF \
     ..
-
-cmake --build build
-cmake --install build
-

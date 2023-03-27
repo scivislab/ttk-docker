@@ -1,4 +1,4 @@
-MESA_VERSION=20.3.5
+MESA_VERSION=23.0.0
 
 # install packges required for build
 require-pkgs \
@@ -14,7 +14,7 @@ require-pkgs \
 	flex
 
 # fetch and unpack source
-fetch-src https://codeload.github.com/mesa3d/mesa/tar.gz/refs/tags/mesa-${MESA_VERSION}
+fetch-src https://gitlab.freedesktop.org/mesa/mesa/-/archive/mesa-${MESA_VERSION}/mesa-mesa-${MESA_VERSION}.tar.gz
 
 # determine build type from CMake default
 case ${CMAKE_BUILD_TYPE,,} in 
@@ -32,7 +32,7 @@ esac
 # configure 
 meson build \
     -Dbuildtype=${buildtype}        \
-    -Dosmesa=gallium			    \
+    -Dosmesa=true   			    \
     -Dplatforms= 				    \
     -Dgallium-drivers=swrast	    \
     -Dglx=disabled				    \
@@ -41,7 +41,6 @@ meson build \
     -Dllvm=enabled				    \
     -Ddri-drivers=				    \
     -Dvulkan-drivers=			    \
-    -Dswr-arches=				    \
     -Dshared-glapi=true
 
 # build

@@ -1,4 +1,4 @@
-SPECTRA_VERSION=1.0.0
+SPECTRA_VERSION=1.0.1
 
 require-pkgs \
     libeigen3-dev

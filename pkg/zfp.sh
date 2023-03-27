@@ -1,4 +1,4 @@
-ZFP_VERSION=0.5.5
+ZFP_VERSION=1.0.0
 
 require-pkgs \
     vim             \

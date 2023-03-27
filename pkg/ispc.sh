@@ -1,9 +1,9 @@
-ISPC_VERSION=1.16.1
-
+ISPC_VERSION=1.19.0
 
 require-pkgs \
     clang        \
     libclang-dev \
+    libomp-dev	 \
     llvm-dev     \
     $([ "$(arch)" == "x86_64"  ] && echo "libc6-dev-i386-cross" ) \
     $([ "$(arch)" == "aarch64" ] && echo "libc6-dev-armhf-cross") \
@@ -12,7 +12,6 @@ require-pkgs \
     flex            \
     libz-dev
 
-
 fetch-src https://github.com/ispc/ispc/archive/refs/tags/v${ISPC_VERSION}.tar.gz
 
 conf_args \
@@ -20,7 +19,6 @@ conf_args \
     -DX86_ENABLED=$([ "$(arch)" == "x86_64"  ] && echo "ON" || echo "OFF") \
     -DARM_ENABLED=$([ "$(arch)" == "aarch64" ] && echo "ON" || echo "OFF") \
     -DWASM_ENABLED=OFF          \
-    -DISPC_NO_DUMPS=ON          \
     -DISPC_STATIC_LINK=ON       \
     -DISPC_INCLUDE_EXAMPLES=OFF \
     -DISPC_INCLUDE_TESTS=OFF    \

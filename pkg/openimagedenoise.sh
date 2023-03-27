@@ -1,4 +1,4 @@
-OIDN_VERSION=1.4.2
+OIDN_VERSION=1.4.3
 
 # only build on x86_64
 if [ $(arch) == "x86_64" ]; then
