@@ -53,6 +53,7 @@ cmake-default \
     -DTTK_ENABLE_OPENMP=ON \
     -DTTK_ENABLE_KAMIKAZE=ON \
     -DTTK_ENABLE_64BIT_IDS=ON \
+    -DTTK_ENABLE_EMBREE=ON \
     ..
 
 # call Ninja manually to ignore duplicate targets
