@@ -1,5 +1,4 @@
-FROM ubuntu:focal as base
-LABEL maintainer="Christoph Garth <garth@cs.uni-kl.de>"
+FROM ubuntu:jammy as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -13,7 +12,7 @@ ENV CMAKE_BUILD_TYPE=MinSizeRel \
 # bring in additional apt sources
 RUN apt-get update \ 
  && apt-get install --no-install-recommends -yqq ca-certificates \
- && echo "deb [trusted=yes] https://apt.kitware.com/ubuntu/ focal main" > /etc/apt/sources.list.d/kitware.list \
+ && echo "deb [trusted=yes] https://apt.kitware.com/ubuntu/ jammy main" > /etc/apt/sources.list.d/kitware.list \
  && apt-get update
 
 # install base development env
