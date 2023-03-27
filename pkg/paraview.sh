@@ -43,6 +43,7 @@ conf_args \
     -DVTK_USE_X:BOOL=OFF 					    \
     -DVTK_OPENGL_HAS_OSMESA:BOOL=ON 		    \
     -DVTK_SMP_IMPLEMENTATION_TYPE=OpenMP        \
+    -DVTK_USE_64BIT_IDS=ON                      \
     -DVTKOSPRAY_ENABLE_DENOISER=${enable_dn}
 
 cmake-default
