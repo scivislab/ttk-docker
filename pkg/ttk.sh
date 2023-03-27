@@ -2,35 +2,8 @@
 set -e
 
 require-pkgs \
-    build-essential         \
-    cmake                   \
-    curl                    \
-    libboost-system-dev     \
-    libcgns-dev             \
-    libeigen3-dev           \
-    libexpat1-dev           \
-    libfreetype6-dev        \
-    libhdf5-dev             \
-    libjpeg-dev             \
-    libjsoncpp-dev          \
-    liblz4-dev              \
-    liblzma-dev             \
-    libnetcdf-cxx-legacy-dev\
-    libnetcdf-dev           \
-    libogg-dev              \
-    libpng-dev              \
-    libprotobuf-dev         \
-    libpugixml-dev          \
-    libsqlite3-dev          \
-    libgraphviz-dev	    \
-    libtheora-dev           \
-    libtiff-dev             \
-    libxml2-dev             \
-    ninja-build             \
-    protobuf-compiler       \
-    python3-dev             \
-    python3-numpy-dev       \
-    zlib1g-dev
+    libboost-system-dev
+    
     
 if [ -n "${DEV}" ]; then
         #echo "DEVELOPER MODE"
