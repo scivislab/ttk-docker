@@ -1,11 +1,11 @@
-FROM ubuntu:focal as base
+FROM ubuntu:focal AS base
 LABEL maintainer="Christoph Garth <garth@cs.uni-kl.de>"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 # --------------------------------------------------------------------------
 
-FROM base as build-base
+FROM base AS build-base
 
 ENV CMAKE_BUILD_TYPE=MinSizeRel \
     CMAKE_GENERATOR=Ninja
@@ -27,7 +27,7 @@ RUN apt-get install --no-install-recommends -yqq \
 
 # --------------------------------------------------------------------------
 
-FROM build-base as builder
+FROM build-base AS builder
 
 COPY install-helper /usr/bin
 
@@ -74,7 +74,7 @@ RUN  install-helper /tmp/paraview.sh
 
 # --------------------------------------------------------------------------
 
-FROM builder as builder-ttk
+FROM builder AS builder-ttk
 
 # install TTK
 ARG ttk=dev
@@ -88,7 +88,7 @@ RUN  install-helper /tmp/ttk.sh
 # --------------------------------------------------------------------------
 
 #FROM builder-ttk as ttk-dev
-FROM builder as ttk-dev
+FROM builder AS ttk-dev
 
 #COPY --from=builder-ttk /usr/local /usr/local
 
@@ -111,7 +111,7 @@ RUN apt-get install --no-install-recommends -yqq \
   
 # --------------------------------------------------------------------------
 
-FROM base as ttk
+FROM base AS ttk
 
 COPY --from=builder-ttk /usr/local /usr/local
 
