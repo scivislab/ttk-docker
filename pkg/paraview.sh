@@ -16,7 +16,6 @@ require-pkgs \
     libogg-dev			    \
     libtheora-dev		    \
     libnetcdf-dev		    \
-    libnetcdf-cxx-legacy-dev\
     libxml2-dev			    \
     libjsoncpp-dev		    \
     libpugixml-dev		    \

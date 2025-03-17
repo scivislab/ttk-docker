@@ -1,5 +1,4 @@
-ISPC_VERSION=1.16.1
-
+ISPC_VERSION=1.26.0
 
 require-pkgs \
     clang        \
@@ -16,7 +15,6 @@ require-pkgs \
 fetch-src https://github.com/ispc/ispc/archive/refs/tags/v${ISPC_VERSION}.tar.gz
 
 conf_args \
-    -DCMAKE_BUILD_TYPE=Release  \
     -DX86_ENABLED=$([ "$(arch)" == "x86_64"  ] && echo "ON" || echo "OFF") \
     -DARM_ENABLED=$([ "$(arch)" == "aarch64" ] && echo "ON" || echo "OFF") \
     -DWASM_ENABLED=OFF          \

@@ -1,4 +1,4 @@
-EMBREE_VERSION=3.13.2
+EMBREE_VERSION=4.3.3
 
 require-pkgs \
     libtbb-dev
@@ -7,6 +7,7 @@ require-pkgs \
 fetch-src https://github.com/embree/embree/archive/v${EMBREE_VERSION}.tar.gz
 
 cmake-default \
+    -DEMBREE_ISPC_SUPPORT=ON    \
     -DEMBREE_TASKING_SYSTEM=TBB \
     -DEMBREE_TUTORIALS=OFF
 

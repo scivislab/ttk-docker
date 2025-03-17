@@ -1,11 +1,7 @@
 #! /bin/bash
 
-curl -L https://github.com/ospray/ospray/archive/v2.8.0.tar.gz | tar xz --strip-components 1
+fetch-src https://github.com/ospray/ospray/archive/v3.2.0.tar.gz
 
-cmake -S . -B build \
-    -DOSPRAY_ENABLE_APPS=OFF \
-    ..
-
-cmake --build build
-cmake --install build
+cmake-default \
+    -DOSPRAY_ENABLE_APPS=OFF
 

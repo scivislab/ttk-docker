@@ -15,14 +15,13 @@ require-pkgs \
     libjsoncpp-dev          \
     liblz4-dev              \
     liblzma-dev             \
-    libnetcdf-cxx-legacy-dev\
     libnetcdf-dev           \
     libogg-dev              \
     libpng-dev              \
     libprotobuf-dev         \
     libpugixml-dev          \
     libsqlite3-dev          \
-    libgraphviz-dev	    \
+    libgraphviz-dev	        \
     libtheora-dev           \
     libtiff-dev             \
     libxml2-dev             \

@@ -1,4 +1,4 @@
-MESA_VERSION=20.3.5
+MESA_VERSION=24.2.3
 
 # install packges required for build
 require-pkgs \
@@ -14,7 +14,8 @@ require-pkgs \
 	flex
 
 # fetch and unpack source
-fetch-src https://codeload.github.com/mesa3d/mesa/tar.gz/refs/tags/mesa-${MESA_VERSION}
+curl -qL http://archive.ubuntu.com/ubuntu/pool/main/m/mesa/mesa_${MESA_VERSION}.orig.tar.xz | tar xJ --strip-components 1
+
 
 # determine build type from CMake default
 case ${CMAKE_BUILD_TYPE,,} in 
@@ -30,19 +31,19 @@ case ${CMAKE_BUILD_TYPE,,} in
 esac
 
 # configure 
-meson build \
-    -Dbuildtype=${buildtype}        \
-    -Dosmesa=gallium			    \
-    -Dplatforms= 				    \
-    -Dgallium-drivers=swrast	    \
-    -Dglx=disabled				    \
-    -Dgles2=false				    \
-    -Dgles1=false				    \
-    -Dllvm=enabled				    \
-    -Ddri-drivers=				    \
-    -Dvulkan-drivers=			    \
-    -Dswr-arches=				    \
-    -Dshared-glapi=true
+meson setup                         \
+    --buildtype=${buildtype}        \
+    -Dplatforms=                    \
+    -Dosmesa=true                   \
+    -Dgallium-drivers=llvmpipe      \
+    -Dglx=disabled                  \
+    -Dllvm=enabled                  \
+    -Dvulkan-drivers=               \
+    -Dgles2=disabled                \
+    -Dgles1=disabled                \
+    -Degl=disabled                  \
+    -Dshared-glapi=disabled         \
+    build
 
 # build
 ninja -C build 
